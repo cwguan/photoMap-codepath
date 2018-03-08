@@ -61,7 +61,7 @@ class LocationsViewController: UIViewController, UITableViewDelegate, UITableVie
         let latString = "\(lat)"
         let lngString = "\(lng)"
 
-        print(latString + " " + lngString)
+        //print(latString + " " + lngString)
         
         delegate.locationsPickedLocation(controller: self, latitude: lat, longitude: lng)
     }
