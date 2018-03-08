@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LocationsViewControllerDelegate {
+    
     
     var selectedImage: UIImage?
 
@@ -47,6 +48,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         })
     }
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,6 +71,13 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let locationsViewController = segue.destination as! LocationsViewController
+        locationsViewController.delegate = self
+        
+    }
+    
+    func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber) {
+        self.navigationController?.popToViewController(self, animated: true)
     }
     
 
